@@ -156,27 +156,94 @@ void main() {
 
 ### **Parte 4: Funções e Métodos**
 
-**Objetivo**: Introduzir funções e métodos, que são blocos de código reutilizáveis.
+**Objetivo**: Introduzir o conceito de funções e métodos, que são blocos de código reutilizáveis que podem ser chamados para realizar tarefas específicas, reduzindo a duplicação e tornando o código mais organizado.
 
-#### **Explicação teórica**:
-- **Funções**: Blocos de código que podem ser chamados para executar tarefas específicas.
+#### **Explicação Teórica**:
+- **Funções**: São blocos de código independentes que executam uma tarefa específica. Funções podem receber **parâmetros** (dados de entrada), e algumas podem retornar **valores** após a execução. 
+- Funções são úteis para organizar o código e evitar repetições. Uma vez que uma função é definida, você pode chamá-la em qualquer parte do código sempre que precisar daquela funcionalidade.
 
-#### **Exemplo de código**:
-
+**Sintaxe básica de uma função**:
 ```dart
-void main() {
-  print(soma(5, 3)); // Chama a função e exibe o resultado: 8
-}
-
-// Função que retorna a soma de dois números
-int soma(int a, int b) {
-  return a + b;
+// Declaração da função
+tipoDeRetorno nomeDaFuncao(parametros) {
+  // Corpo da função
+  return valor; // (Opcional, dependendo do tipo de retorno)
 }
 ```
 
-#### **Explicação passo a passo**:
-1. **Função soma**: Esta função recebe dois parâmetros (`a` e `b`), e retorna a soma deles.
-2. **Chamada da Função**: No `main()`, chamamos a função `soma(5, 3)` e imprimimos o resultado.
+- **Tipo de retorno**: Indica o tipo de dado que a função vai retornar, como `int`, `String`, `void` (caso não retorne nada), etc.
+- **Parâmetros**: São os dados que a função precisa para realizar sua tarefa. Parâmetros são opcionais, dependendo da função.
+
+---
+
+
+#### **Exemplo 3: Função com parâmetros e retorno**
+
+```dart
+int soma(int a, int b) {
+  return a + b;  // Retorna a soma de 'a' e 'b'
+}
+
+void main() {
+  int resultado = soma(5, 3);  // A função 'soma' retorna 8
+  print("O resultado é: $resultado");  // Exibe: O resultado é: 8
+}
+```
+
+**Explicação**:
+- A função `soma(int a, int b)` recebe dois inteiros (`a` e `b`) e retorna a soma deles.
+- No `main()`, a função `soma(5, 3)` é chamada, e o valor retornado (8) é armazenado na variável `resultado`. O resultado é então impresso no console.
+
+---
+
+### **Funções vs Métodos**
+
+Uma **função** é definida fora de qualquer classe e serve como um bloco de código reutilizável, enquanto um **método** é uma função associada a uma classe. Ou seja, todas as funções que pertencem a objetos ou classes são chamadas de **métodos**.
+
+---
+
+#### **Exemplo de Métodos em uma Classe**
+
+```dart
+class Pessoa {
+  String nome;
+  int idade;
+  
+  Pessoa(this.nome, this.idade);
+  
+  void exibirDados() {
+    print("Nome: $nome, Idade: $idade");
+  }
+  
+  int calcularAnoDeNascimento(int anoAtual) {
+    return anoAtual - idade;
+  }
+}
+
+void main() {
+  // Criando um objeto da classe Pessoa
+  Pessoa pessoa = Pessoa("João", 30);
+  
+  // Chamando o método exibirDados()
+  pessoa.exibirDados();  // Exibe: Nome: João, Idade: 30
+  
+  // Chamando o método calcularAnoDeNascimento()
+  int anoNascimento = pessoa.calcularAnoDeNascimento(2024);
+  print("Ano de Nascimento: $anoNascimento");  // Exibe: Ano de Nascimento: 1994
+}
+```
+
+**Explicação**:
+- A classe `Pessoa` tem dois métodos: `exibirDados()`, que apenas imprime as informações da pessoa, e `calcularAnoDeNascimento()`, que recebe o ano atual e calcula o ano de nascimento com base na idade da pessoa.
+- Um **método** sempre é chamado através de uma instância de uma classe, como `pessoa.exibirDados()`.
+
+---
+
+### **Resumo**:
+- Funções são blocos de código reutilizáveis que podem ser chamados repetidamente no programa.
+- Funções podem receber parâmetros e retornar valores. Elas ajudam a organizar o código e evitam repetição.
+- Dart permite a definição de parâmetros opcionais e nomeados, oferecendo flexibilidade ao chamar funções.
+- Métodos são funções que pertencem a classes e são chamadas a partir de objetos.
 
 ---
 
