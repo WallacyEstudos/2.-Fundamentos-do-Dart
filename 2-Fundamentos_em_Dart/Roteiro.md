@@ -1,4 +1,4 @@
-Aqui está um roteiro de aula sobre os fundamentos do **Dart**, com foco em iniciantes que nunca programaram antes. O objetivo é introduzir conceitos básicos da linguagem Dart de forma progressiva, explicando cada trecho do código à medida que ele é apresentado. A aula será dividida em seções temáticas para facilitar o aprendizado.
+Aqui está o roteiro de aula detalhado, incluindo o conteúdo a ser apresentado e sugestões de falas para guiar os alunos.
 
 ---
 
@@ -7,311 +7,227 @@ Aqui está um roteiro de aula sobre os fundamentos do **Dart**, com foco em inic
 ---
 
 ### **Objetivo da Aula**:
-Nesta aula, vamos aprender os fundamentos da linguagem Dart, que é usada para desenvolvimento com Flutter. Vamos abordar os seguintes tópicos:
+- Introduzir os conceitos básicos da linguagem Dart.
+- Ensinar o uso de variáveis, controle de fluxo, funções e classes.
+- Fornecer uma base sólida para o desenvolvimento com Dart, preparando para o Flutter.
+
+### **Duração Estimada**: 1h 30m
+
+---
+
+### **Introdução (5 min)**:
+
+**Professor diz**:
+“Olá pessoal, bem-vindos à aula de Dart! Hoje vamos aprender os fundamentos dessa linguagem de programação criada pelo Google. Para quem não conhece, Dart é usada principalmente no desenvolvimento de aplicativos móveis com o Flutter. Vamos começar do zero, então, mesmo que você nunca tenha programado antes, não se preocupe! Vamos dar um passo de cada vez. Prontos?”
+
+**Slide/Quadro**:  
+**Objetivos da aula**:
 1. Variáveis e Tipos de Dados
 2. Null Safety
 3. Controle de Fluxo (If e Switch)
 4. Funções e Métodos
 5. Classes e Objetos
 
-### **Duração Estimada**: 1h 30m
-
 ---
 
-### **Introdução**: 
-- **Dart** é uma linguagem de programação criada pelo Google, usada principalmente para o desenvolvimento de aplicativos móveis com **Flutter**.
-- Antes de começarmos, lembre-se de que Dart é **fortemente tipada**. Isso significa que devemos especificar o tipo de dado que uma variável pode armazenar.
+### **Parte 1: Variáveis e Tipos de Dados (15 min)**
 
----
+**Professor diz**:  
+“Vamos começar falando sobre variáveis. Vocês podem pensar em variáveis como ‘caixinhas’ onde guardamos dados. E esses dados podem ser de vários tipos: números, textos, verdadeiros ou falsos, entre outros.”
 
-### **Parte 1: Variáveis e Tipos de Dados**
+**Slide/Quadro**:  
+- **Variáveis**: Espaços na memória para guardar informações.
+- **Tipos de Dados**: `int`, `double`, `String`, `bool`, `List`, etc.
 
-**Objetivo**: Mostrar o que são variáveis e como armazenamos informações em Dart.
-
-#### **Explicação teórica**
-- **Variáveis**: Espaços na memória onde podemos guardar dados. Elas podem armazenar números, textos, listas e muito mais.
-- **Tipos de Dados**: Determinam o tipo de valor que uma variável pode armazenar, como `int`, `double`, `String`, `bool`, entre outros.
-
-#### **Exemplo de código**:
+**Professor apresenta o código no IDE**:
 
 ```dart
 void main() {
-  // Declarando uma variável do tipo String para armazenar texto
-  String variavelNome = "José"; // Variável de texto
-  print(variavelNome); // Exibe: José
-  
-  // Declarando uma variável do tipo inteiro (int)
-  int valorVariavel = 10; // Armazena um número inteiro
-  print(valorVariavel); // Exibe: 10
-  
-  // Declarando uma variável do tipo booleano (bool), que pode ser true ou false
-  bool ehVerdadeiro = true; // Armazena verdadeiro
-  print(ehVerdadeiro); // Exibe: true
-  
-  // Declarando uma lista (array) de Strings
-  List<String> listaDePalavras = ["David", "Wilyan"];
-  print(listaDePalavras[0]); // Acessa o primeiro elemento da lista - Exibe: David
-  print(listaDePalavras[1]); // Acessa o segundo elemento da lista - Exibe: Wilyan
-  
-  // Usando interpolação de strings (colocando variáveis dentro de uma string)
-  print('${listaDePalavras[0]} - ${listaDePalavras[1]}'); // Exibe: David - Wilyan
+  String nome = "José"; // Variável de texto
+  int idade = 25; // Variável de número inteiro
+  bool ativo = true; // Variável booleana
+  List<String> amigos = ["Ana", "Carlos"]; // Lista de Strings
+
+  print(nome); // Exibe: José
+  print(idade); // Exibe: 25
+  print(ativo); // Exibe: true
+  print(amigos[0]); // Exibe: Ana
 }
 ```
 
-#### **Explicação passo a passo**:
-1. **String**: Usamos `String` para guardar textos. A variável `variavelNome` armazena "José".
-2. **int**: `int` é usado para armazenar números inteiros (sem casas decimais). A variável `valorVariavel` armazena o número 10.
-3. **bool**: `bool` guarda valores booleanos, ou seja, **true** ou **false**. A variável `ehVerdadeiro` armazena `true`.
-4. **List**: Uma **lista** guarda vários valores. Aqui, a lista `listaDePalavras` contém dois nomes.
+**Professor explica passo a passo**:  
+“Primeiro, temos a variável `nome`, do tipo `String`, que guarda um texto. Depois, a variável `idade`, do tipo `int`, que guarda números inteiros. A variável `ativo` é um valor booleano, ou seja, pode ser **verdadeiro** (`true`) ou **falso** (`false`). E finalmente, temos a `lista` de amigos, que armazena vários textos.”
+
+**Professor diz**:  
+“Podemos acessar os valores dentro da lista usando um índice. Por exemplo, `amigos[0]` nos dá o primeiro amigo, que é `Ana`.”
+
+**Tarefa Rápida**:  
+“Agora, tente criar uma variável chamada `altura`, do tipo `double`, e atribua um valor decimal a ela, como 1.75.”
 
 ---
 
-### **Parte 2: Null Safety**
+### **Parte 2: Null Safety (10 min)**
 
-**Objetivo**: Introduzir o conceito de **null safety** em Dart.
+**Professor diz**:  
+“Agora, vamos falar sobre algo muito importante no Dart: **null safety**. Vocês já ouviram falar do problema de tentar acessar algo que não existe, certo? Em Dart, se você não inicializar uma variável, ela pode causar erros no seu código. Para evitar isso, Dart tem um sistema que garante que as variáveis estejam seguras contra valores nulos.”
 
-#### **Explicação teórica**:
-- **Null Safety**: Significa que Dart protege o seu código para que você não tente acessar variáveis que não foram inicializadas (ou que estão vazias).
+**Slide/Quadro**:  
+- **Null Safety**: Protege seu código contra erros de variáveis não inicializadas.
 
-#### **Exemplo de código**:
+**Professor apresenta o código no IDE**:
 
 ```dart
 void main() {
-  // Declarando uma variável que pode ser nula (adicionando o '?')
-  String? nome;
-  
-  // Inicializando a variável com um valor
+  String? nome; // Pode ser nula
   nome = "ABC";
   print(nome); // Exibe: ABC
-  
-  // Atribuindo null à variável
-  nome = null;
-  // Se tentarmos usar a variável agora, o código daria erro, pois nome é null
 
-  // Usando a palavra 'late' para inicializar a variável depois
+  nome = null;
+  // print(nome); // Isso causaria um erro se tentássemos acessar
+
   late String sobrenome;
   sobrenome = "Wallacy";
   print(sobrenome); // Exibe: Wallacy
 }
 ```
 
-#### **Explicação passo a passo**:
-1. **String?**: O ponto de interrogação `?` indica que a variável pode ser nula, ou seja, pode não conter valor.
-2. **late**: A palavra `late` permite declarar uma variável sem valor e inicializá-la depois.
+**Professor explica**:  
+“Neste exemplo, a variável `nome` pode ser nula, porque usamos o `?`. Isso significa que, em algum momento, ela pode não ter valor. O `late` permite que a gente declare uma variável e a inicialize depois, sem causar problemas.”
+
+**Professor diz**:  
+“Essa proteção do Dart ajuda a evitar muitos erros comuns que acontecem em outras linguagens.”
 
 ---
 
-### **Parte 3: Controle de Fluxo (If e Switch)**
+### **Parte 3: Controle de Fluxo (If e Switch) (20 min)**
 
-**Objetivo**: Mostrar como tomar decisões no código com estruturas de controle de fluxo.
+**Professor diz**:  
+“Agora vamos falar sobre como o Dart toma decisões com base em condições. Existem duas maneiras principais de fazer isso: o `if` e o `switch`.”
 
-#### **Explicação teórica**:
-- O **if** executa código apenas se uma condição for verdadeira.
-- O **switch** é usado para verificar múltiplas condições.
+**Slide/Quadro**:  
+- **If/Else**: Verifica uma condição e executa um bloco de código.
+- **Switch**: Usa múltiplas condições de forma organizada.
 
-#### **Exemplo de código**:
+**Professor apresenta o código no IDE**:
 
 ```dart
 void main() {
-  // Declaração de uma variável booleana
-  bool seguirEmFrente = true;
-  
-  // Estrutura de decisão IF
-  if (seguirEmFrente) {
-    print("Andar"); // Exibe: Andar
+  bool continuar = true;
+
+  if (continuar) {
+    print("Vamos continuar!"); // Exibe: Vamos continuar!
   } else {
-    print("Parar");
-  }
-  
-  // Outro exemplo de IF
-  if (10 > 5) {
-    print("10 é maior que 5"); // Exibe: 10 é maior que 5
+    print("Parei");
   }
 
-  // Estrutura de decisão SWITCH
-  int valorInt = 5;
-  
-  switch (valorInt) {
-    case 0:
-      print("ZERO");
-      break;
+  int opcao = 2;
+  switch (opcao) {
     case 1:
-      print("UM");
+      print("Opção 1");
       break;
     case 2:
-      print("DOIS");
+      print("Opção 2"); // Exibe: Opção 2
       break;
     default:
-      print("PADRÃO"); // Exibe: PADRÃO
+      print("Opção desconhecida");
   }
 }
 ```
 
-#### **Explicação passo a passo**:
-1. **If**: Verifica uma condição. Se a condição for verdadeira, executa um bloco de código.
-2. **Else**: Executa outro bloco de código se a condição for falsa.
-3. **Switch**: Verifica múltiplos valores de uma variável e executa o código correspondente.
+**Professor explica**:  
+“O `if` verifica se `continuar` é verdadeiro. Se for, ele exibe uma mensagem. Se não for, exibe outra. O `switch` verifica o valor da variável `opcao` e executa o código baseado no número escolhido.”
+
+**Professor diz**:  
+“Agora, quero que vocês façam o seguinte: criem um `if` que verifique se um número é maior que 10. Se for, exiba ‘Maior que 10’, se não, exiba ‘Menor ou igual a 10’.”
 
 ---
 
-### **Parte 4: Funções e Métodos**
+### **Parte 4: Funções e Métodos (20 min)**
 
-**Objetivo**: Introduzir o conceito de funções e métodos, que são blocos de código reutilizáveis que podem ser chamados para realizar tarefas específicas, reduzindo a duplicação e tornando o código mais organizado.
+**Professor diz**:  
+“Agora, vamos falar sobre **funções**. Funções são blocos de código que podemos reutilizar, o que torna o nosso programa mais organizado.”
 
-#### **Explicação Teórica**:
-- **Funções**: São blocos de código independentes que executam uma tarefa específica. Funções podem receber **parâmetros** (dados de entrada), e algumas podem retornar **valores** após a execução. 
-- Funções são úteis para organizar o código e evitar repetições. Uma vez que uma função é definida, você pode chamá-la em qualquer parte do código sempre que precisar daquela funcionalidade.
+**Slide/Quadro**:  
+- **Funções**: Blocos de código reutilizáveis.
 
-**Sintaxe básica de uma função**:
-```dart
-// Declaração da função
-tipoDeRetorno nomeDaFuncao(parametros) {
-  // Corpo da função
-  return valor; // (Opcional, dependendo do tipo de retorno)
-}
-```
-
-- **Tipo de retorno**: Indica o tipo de dado que a função vai retornar, como `int`, `String`, `void` (caso não retorne nada), etc.
-- **Parâmetros**: São os dados que a função precisa para realizar sua tarefa. Parâmetros são opcionais, dependendo da função.
-
----
-
-
-#### **Exemplo 3: Função com parâmetros e retorno**
-
-```dart
-int soma(int a, int b) {
-  return a + b;  // Retorna a soma de 'a' e 'b'
-}
-
-void main() {
-  int resultado = soma(5, 3);  // A função 'soma' retorna 8
-  print("O resultado é: $resultado");  // Exibe: O resultado é: 8
-}
-```
-
-**Explicação**:
-- A função `soma(int a, int b)` recebe dois inteiros (`a` e `b`) e retorna a soma deles.
-- No `main()`, a função `soma(5, 3)` é chamada, e o valor retornado (8) é armazenado na variável `resultado`. O resultado é então impresso no console.
-
----
-
-### **Funções vs Métodos**
-
-Uma **função** é definida fora de qualquer classe e serve como um bloco de código reutilizável, enquanto um **método** é uma função associada a uma classe. Ou seja, todas as funções que pertencem a objetos ou classes são chamadas de **métodos**.
-
----
-
-#### **Exemplo de Métodos em uma Classe**
-
-```dart
-class Pessoa {
-  String nome;
-  int idade;
-  
-  Pessoa(this.nome, this.idade);
-  
-  void exibirDados() {
-    print("Nome: $nome, Idade: $idade");
-  }
-  
-  int calcularAnoDeNascimento(int anoAtual) {
-    return anoAtual - idade;
-  }
-}
-
-void main() {
-  // Criando um objeto da classe Pessoa
-  Pessoa pessoa = Pessoa("João", 30);
-  
-  // Chamando o método exibirDados()
-  pessoa.exibirDados();  // Exibe: Nome: João, Idade: 30
-  
-  // Chamando o método calcularAnoDeNascimento()
-  int anoNascimento = pessoa.calcularAnoDeNascimento(2024);
-  print("Ano de Nascimento: $anoNascimento");  // Exibe: Ano de Nascimento: 1994
-}
-```
-
-**Explicação**:
-- A classe `Pessoa` tem dois métodos: `exibirDados()`, que apenas imprime as informações da pessoa, e `calcularAnoDeNascimento()`, que recebe o ano atual e calcula o ano de nascimento com base na idade da pessoa.
-- Um **método** sempre é chamado através de uma instância de uma classe, como `pessoa.exibirDados()`.
-
----
-
-### **Resumo**:
-- Funções são blocos de código reutilizáveis que podem ser chamados repetidamente no programa.
-- Funções podem receber parâmetros e retornar valores. Elas ajudam a organizar o código e evitam repetição.
-- Dart permite a definição de parâmetros opcionais e nomeados, oferecendo flexibilidade ao chamar funções.
-- Métodos são funções que pertencem a classes e são chamadas a partir de objetos.
-
----
-
-### **Parte 5: Classes e Objetos**
-
-**Objetivo**: Apresentar os conceitos de Programação Orientada a Objetos (POO), com exemplos de classes e objetos.
-
-#### **Explicação teórica**:
-- **Classes**: São como moldes que definem as características (atributos) e ações (métodos) dos objetos.
-- **Objetos**: São instâncias de uma classe.
-
-#### **Exemplo de código**:
+**Professor apresenta o código no IDE**:
 
 ```dart
 void main() {
-  // Criação de dois objetos da classe Celular
-  Celular celularDoDeivid = Celular('Azul', 5, 0.000, 5.7);
-  Celular celularDoZe = Celular('Preto', 10, 0.000, 5.7);
-  
-  // Exibindo os valores do celular usando o método toString
-  print(celularDoDeivid.toString()); // Exibe: Cor Azul, qtdPros 5, Peso 0.0, Tamanho 5.7
-  print(celularDoZe.toString()); // Exibe: Cor Preto, qtdPros 10, Peso 0.0, Tamanho 5.7
-  
-  // Calculando o valor do celular com base no número de processadores
-  double resultado = celularDoDeivid.valorDoCelular(1000);
-  print(resultado); // Exibe: 1005.0
+  int resultado = somar(3, 5); // Chama a função
+  print(resultado); // Exibe: 8
 }
 
-// Definindo a classe Celular
-class Celular {
-  final String cor;
-  final int qtdPros;
-  final double tamanho;
-  final double peso;
-  
-  // Construtor da classe Celular
-  Celular(this.cor, this.qtdPros, this.peso, this.tamanho);
-  
-  // Método toString para exibir as informações do celular
+// Função que soma dois números
+int somar(int a, int b) {
+  return a + b;
+}
+```
+
+**Professor explica**:  
+“Aqui, temos uma função chamada `somar`, que recebe dois números como parâmetros e retorna a soma deles. No `main()`, chamamos essa função e armazenamos o resultado na variável `resultado`.”
+
+**Professor diz**:  
+“Agora, criem uma função chamada `subtrair`, que recebe dois números e retorna a diferença entre eles. Depois, testem a função.”
+
+---
+
+### **Parte 5: Classes e Objetos (30 min)**
+
+**Professor diz**:  
+“Chegamos à parte de **classes e objetos**. Dart é uma linguagem orientada a objetos, o que significa que usamos classes para criar moldes de objetos.”
+
+**Slide/Quadro**:  
+- **Classes**: Moldes que definem as características e comportamentos de objetos.
+- **Objetos**: Instâncias de uma classe.
+
+**Professor apresenta o código no IDE**:
+
+```dart
+void main() {
+  Carro meuCarro = Carro('BMW', 'X5', 2022);
+  print(meuCarro.toString()); // Exibe: Marca: BMW, Modelo: X5, Ano: 2022
+}
+
+class Carro {
+  String marca;
+  String modelo;
+  int ano;
+
+  Carro(this.marca, this.modelo, this.ano);
+
   String toString() {
-    return 'Cor $cor, qtdPros $qtdPros, Peso $peso, Tamanho $tamanho';
-  }
-  
-  // Método que calcula o valor do celular
-  double valorDoCel
-
-ular(double preco) {
-    return preco + qtdPros.toDouble();
+    return 'Marca: $marca, Modelo: $modelo, Ano: $ano';
   }
 }
 ```
 
-#### **Explicação passo a passo**:
-1. **Classe Celular**: Definimos uma classe com atributos como `cor`, `qtdPros`, `peso` e `tamanho`.
-2. **Construtor**: O construtor inicializa esses atributos quando criamos um objeto.
-3. **Métodos**: A classe tem métodos como `toString()` para exibir os valores e `valorDoCelular()` para calcular um valor com base em parâmetros.
+**Professor explica**:  
+“Neste exemplo, temos uma classe `Carro`, que tem três atributos: `marca`, `modelo` e `ano`. O construtor é chamado quando criamos um objeto, como `meuCarro`. E o método `toString()` retorna uma descrição do carro.”
+
+**Professor diz**:  
+“Agora é a vez de vocês: Criem uma classe chamada `Pessoa` com os atributos `nome`, `idade` e `cidade`. Depois, criem um método que exiba essas informações.”
 
 ---
 
-### **Conclusão e Exercício Final**
+### **Conclusão e Exercício Final (10 min)**
 
-Agora que cobrimos os fundamentos de Dart, que tal tentar criar uma nova classe chamada `Carro`? Adicione atributos como `marca`, `modelo` e `ano`, e crie um método que exiba as informações do carro. 
+**Professor diz**:  
+“Para finalizar, tentem fazer o seguinte exercício: Crie uma nova classe `Carro`, adicione os atributos `marca`, `modelo` e `ano`, e crie um método `detalhes()` que exiba as informações do carro. Depois, criem um objeto dessa classe e exibam os detalhes.”
 
+**Slide/Quadro**:  
 **Exemplo de Tarefa**:
-- Crie uma classe `Carro`.
-- Adicione um método `toString()` que exiba os detalhes do carro.
-- Crie um objeto da classe `Carro` e exiba suas informações.
+- Crie a classe `Carro`.
+- Adicione um método `detalhes()`.
+- Crie um objeto e exiba as informações.
 
 ---
 
-Este roteiro explica cada parte do código em detalhes, fornecendo uma abordagem didática e progressiva para iniciantes.
+**Professor encerra**:  
+“Ótimo trabalho, pessoal! Hoje
+
+ vocês aprenderam os conceitos básicos de Dart. Lembrem-se de praticar bastante para fixar o conteúdo. Na próxima aula, vamos explorar mais sobre funções e objetos. Até mais!”
+
+---
+
+Esse roteiro cobre os principais tópicos, equilibrando teoria e prática.
